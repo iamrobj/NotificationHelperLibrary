@@ -12,4 +12,8 @@ public class AppUtils {
         return Build.VERSION.SDK_INT >= 18;
     }
 
+    public static boolean isLollipop() {
+        return Build.VERSION.SDK_INT >= 21;
+    }
+
 }
