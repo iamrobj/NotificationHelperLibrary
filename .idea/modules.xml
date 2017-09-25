@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/notifLib.iml" filepath="$PROJECT_DIR$/notifLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notifLib/notifLib-notifLib.iml" filepath="$PROJECT_DIR$/notifLib/notifLib-notifLib.iml" />
+    </modules>
+  </component>
+</project>
