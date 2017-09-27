@@ -29,6 +29,7 @@ import models.NotificationIds;
 public class NotificationUtils {
 
     private static final CharSequence REPLY_KEYWORD = "reply";
+    private static final CharSequence INPUT_KEYWORD = "input";
 
     /**
      * http://stackoverflow.com/questions/9292032/extract-notification-text-from-parcelable-contentview-or-contentintent *
@@ -213,7 +214,7 @@ public class NotificationUtils {
         NotificationCompat.WearableExtender wearableExtender = new NotificationCompat.WearableExtender(n);
         if (wearableExtender.getActions().size() > 0) {
             for (NotificationCompat.Action action : wearableExtender.getActions())
-                actions.add(new Action(action, packageName, action.title.toString().toLowerCase().contains("reply")));
+                actions.add(new Action(action, packageName, action.title.toString().toLowerCase().contains(REPLY_KEYWORD)));
         }
         return actions;
     }
@@ -247,6 +248,8 @@ public class NotificationUtils {
             for (int x = 0; x < action.getRemoteInputs().length; x++) {
                 RemoteInput remoteInput = action.getRemoteInputs()[x];
                 if (remoteInput.getResultKey().toLowerCase().contains(REPLY_KEYWORD))
+                    return action;
+                else if (remoteInput.getResultKey().toLowerCase().contains(INPUT_KEYWORD))
                     return action;
             }
         }
