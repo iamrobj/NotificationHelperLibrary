@@ -245,12 +245,14 @@ public class NotificationUtils {
     private static NotificationCompat.Action getWearReplyAction(Notification n) {
         NotificationCompat.WearableExtender wearableExtender = new NotificationCompat.WearableExtender(n);
         for (NotificationCompat.Action action : wearableExtender.getActions()) {
-            for (int x = 0; x < action.getRemoteInputs().length; x++) {
-                RemoteInput remoteInput = action.getRemoteInputs()[x];
-                if (remoteInput.getResultKey().toLowerCase().contains(REPLY_KEYWORD))
-                    return action;
-                else if (remoteInput.getResultKey().toLowerCase().contains(INPUT_KEYWORD))
-                    return action;
+            if(action.getRemoteInputs() != null) {
+                for (int x = 0; x < action.getRemoteInputs().length; x++) {
+                    RemoteInput remoteInput = action.getRemoteInputs()[x];
+                    if (remoteInput.getResultKey().toLowerCase().contains(REPLY_KEYWORD))
+                        return action;
+                    else if (remoteInput.getResultKey().toLowerCase().contains(INPUT_KEYWORD))
+                        return action;
+                }
             }
         }
         return null;
