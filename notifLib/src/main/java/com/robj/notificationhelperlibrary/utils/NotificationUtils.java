@@ -28,7 +28,7 @@ import models.NotificationIds;
 
 public class NotificationUtils {
 
-    private static final String[] REPLY_KEYWORDS = {"reply", "android.intent.extra.TEXT"};
+    private static final String[] REPLY_KEYWORDS = {"reply", "android.intent.extra.text"};
     private static final CharSequence REPLY_KEYWORD = "reply";
     private static final CharSequence INPUT_KEYWORD = "input";
 
