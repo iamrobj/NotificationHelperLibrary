@@ -161,7 +161,7 @@ public abstract class BaseNotificationListener extends NotificationListenerServi
             } catch (IndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
-            if (remove) {
+            if (remove && pending.size() > index) {
                 pending.get(index).getScheduledFuture().cancel(false);
                 pending.remove(index);
             }
