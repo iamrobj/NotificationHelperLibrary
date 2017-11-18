@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.robj.notificationhelperlibrary.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import models.Action;
 import models.NotificationIds;
@@ -31,6 +32,12 @@ public class NotificationUtils {
     private static final String[] REPLY_KEYWORDS = {"reply", "android.intent.extra.text"};
     private static final CharSequence REPLY_KEYWORD = "reply";
     private static final CharSequence INPUT_KEYWORD = "input";
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+    public static boolean isRecent(StatusBarNotification sbn, long recentTimeframeInSecs) {
+        return sbn.getNotification().when > 0 &&  //Checks against real time to make sure its new
+                System.currentTimeMillis() - sbn.getNotification().when <= TimeUnit.SECONDS.toMillis(recentTimeframeInSecs);
+    }
 
     /**
      * http://stackoverflow.com/questions/9292032/extract-notification-text-from-parcelable-contentview-or-contentintent *
